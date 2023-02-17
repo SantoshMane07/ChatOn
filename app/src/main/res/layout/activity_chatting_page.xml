@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.ChattingPageActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/ChattingPage_toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primaryColor"
+            app:titleTextColor="@color/white">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ChatProfileimgview"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:civ_border_color="@color/primaryColor"
+                app:civ_border_width="@dimen/_2sdp"
+                tools:src="@drawable/riteshdeshmukhprofilepic" />
+
+            <TextView
+                android:id="@+id/tv_receiver_name"
+                style="@style/UserNameStringColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:textStyle="bold"
+                tools:text="Ritesh Deshmukh " />
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chattingPage_recview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll3"
+        android:layout_below="@+id/appBarLayout"
+        tools:listitem="@layout/receiver_chat_row" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginBottom="6dp">
+
+            <EditText
+                android:id="@+id/edt_messeage"
+                android:layout_width="@dimen/_240sdp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/inputboxshape"
+                android:hint="Enter Messeage"
+                android:maxHeight="@dimen/_100sdp"
+                android:paddingStart="@dimen/_40sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_40sdp"
+                android:paddingBottom="@dimen/_10sdp" />
+        </ScrollView>
+
+        <ImageButton
+            android:id="@+id/btn_send_mssge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/sendbtnshape"
+            android:padding="@dimen/_3sdp"
+            android:src="@drawable/ic_round_send_24" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>

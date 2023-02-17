@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ChatOn</string>
+    <string name="tagline">Stay Connected with your near ones</string>
+    <string name="developername">From Santosh Mane </string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an Account</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="confirm_your_password">Confirm Your Password</string>
+    <string name="log_in">Login</string>
+    <string name="your_chats">Your Chats</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="logout">Logout</string>
+    <string name="name">Name</string>
+    <string name="status">Status</string>
+    <string name="logout_dialog_title">Are You Sure You Want to Logout</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="create_new_account">Create new Account</string>
+</resources>
