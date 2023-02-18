@@ -119,7 +119,7 @@ class ChattingPageActivity : AppCompatActivity() {
                             var title = snapshot.child("name").value.toString()
                             Log.d("TESTnoti", "sendNotification: title is $title")
                             Log.d("TESTnoti", "sendNotification: Token is $receiverToken")
-                            sendNotification(PushNotification(NotificationData(title,mssg),"$receiverToken"))
+                            sendNotification(PushNotification(NotificationData(title,mssg,senderID, receiverID),"$receiverToken"))
                             flag=false
                         }
                     }
