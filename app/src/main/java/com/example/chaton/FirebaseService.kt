@@ -25,8 +25,8 @@ class FirebaseService : FirebaseMessagingService() {
         super.onMessageReceived(message)
 
         val intent = Intent(this,ChattingPageActivity::class.java)
-        intent.putExtra("senderID","${message.data["senderID"]}")
-        intent.putExtra("receiverID","${message.data["receiverID"]}")
+        intent.putExtra("senderID","${message.data["receiverID"]}")
+        intent.putExtra("receiverID","${message.data["senderID"]}")
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationID = Random.nextInt()
