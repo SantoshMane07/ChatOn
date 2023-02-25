@@ -13,7 +13,7 @@ import com.example.chaton.R
 import com.example.chaton.RetrofitInstance
 import com.example.chaton.databinding.ActivityChattingPageBinding
 import com.example.chaton.models.Messeage
-import com.example.chaton.models.adapters.MesseageAdapter
+import com.example.chaton.models.adapters.MessageAdapter
 import com.example.chaton.repository.DataRepository
 import com.example.chaton.viewmodels.ChattingPageViewModel
 import com.example.chaton.viewmodels.ChattingPageViewModelFactory
@@ -36,7 +36,7 @@ class ChattingPageActivity : AppCompatActivity() {
     lateinit var senderID:String
     lateinit var receiverID:String
     lateinit var chattingPageViewModel: ChattingPageViewModel
-    var madapter : MesseageAdapter = MesseageAdapter()
+    var madapter : MessageAdapter = MessageAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         chattingPageBinding=ActivityChattingPageBinding.inflate(layoutInflater)
         setContentView(chattingPageBinding.root)
@@ -64,11 +64,11 @@ class ChattingPageActivity : AppCompatActivity() {
         //Getting Messeages from DB and Setting it on Recyclerview
         chattingPageViewModel.getConversations(senderRoom).observe(this, androidx.lifecycle.Observer {
             //DataChanged clear array add new data to array
-            messArr.clear()
-            messArr.addAll(it)
+//            messArr.clear()
+//            messArr.addAll(it)
             //NotifyDataSetChanged to adapter
-            madapter.messgListChanged(messArr)
-            chattingPageBinding.chattingPageRecview.scrollToPosition(messArr.size-1)
+            madapter.messgListChanged(it)
+            chattingPageBinding.chattingPageRecview.scrollToPosition(it.size-1)
         })
         chattingPageBinding.chattingPageRecview.adapter=madapter
 
