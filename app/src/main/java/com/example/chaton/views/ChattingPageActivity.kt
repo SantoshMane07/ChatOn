@@ -52,6 +52,7 @@ class ChattingPageActivity : AppCompatActivity() {
         chattingPageViewModel.getReceiverProfileData(receiverID).observe( this, androidx.lifecycle.Observer {
             chattingPageBinding.tvReceiverName.text= it.name
             Picasso.get().load(it.imgUri).into(chattingPageBinding.ChatProfileimgview)
+            chattingPageBinding.tvReceiverActive.text = it.active
         })
         //
         var messArr:ArrayList<Messeage> = ArrayList()
@@ -98,6 +99,21 @@ class ChattingPageActivity : AppCompatActivity() {
         supportActionBar!!.title=""
         getSupportActionBar()!!.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
+    }
+    //On Pause
+    override fun onPause() {
+        super.onPause()
+        chattingPageViewModel.setUserStatusOffline(senderID)
+    }
+    //On Resume
+    override fun onResume() {
+        super.onResume()
+        chattingPageViewModel.setUserStatusOnline(senderID)
+    }
+    //On Start
+    override fun onStart() {
+        super.onStart()
+        chattingPageViewModel.setUserStatusOnline(senderID)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         super.onBackPressed()

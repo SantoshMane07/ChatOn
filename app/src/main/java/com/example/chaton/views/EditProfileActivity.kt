@@ -59,6 +59,7 @@ class EditProfileActivity : AppCompatActivity() {
             USERDATAobj.id=it.id
             USERDATAobj.email=it.email
             USERDATAobj.phone=it.phone
+            USERDATAobj.active=it.active
         })
         //Clicked on EditImage
         editProfileBinding.cimgvEditProfile.setOnClickListener{
@@ -85,6 +86,7 @@ class EditProfileActivity : AppCompatActivity() {
                         user.phone=USERDATAobj.phone
                         user.status=editProfileBinding.edtUserStatus.text.toString()
                         user.name=editProfileBinding.edtUserName.text.toString()
+                        user.active = USERDATAobj.active
                         editProfileViewModel.saveUserProfileData(user,"${mauth.currentUser!!.uid}",this)
                     }
                 }
@@ -110,6 +112,16 @@ class EditProfileActivity : AppCompatActivity() {
 
 
 
+    }
+    //On Pause
+    override fun onPause() {
+        super.onPause()
+        editProfileViewModel.setUserStatusOffline(mauth.currentUser!!.uid)
+    }
+    //On Resume
+    override fun onResume() {
+        super.onResume()
+        editProfileViewModel.setUserStatusOnline(mauth.currentUser!!.uid)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         super.onBackPressed()

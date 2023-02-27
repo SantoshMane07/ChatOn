@@ -12,6 +12,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class DataRepository(val db: FirebaseDatabase) {
     private var mauth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -76,6 +80,7 @@ class DataRepository(val db: FirebaseDatabase) {
                 ReceiverProfileH.email=snapshot.child("email").value.toString()
                 ReceiverProfileH.phone=snapshot.child("phone").value.toString()
                 ReceiverProfileH.id=snapshot.child("id").value.toString()
+                ReceiverProfileH.active=snapshot.child("active").value.toString()
                 ReceiverProfile.postValue(ReceiverProfileH)
             }
 
@@ -97,6 +102,7 @@ class DataRepository(val db: FirebaseDatabase) {
                 UserProfileH.email=snapshot.child("email").value.toString()
                 UserProfileH.phone=snapshot.child("phone").value.toString()
                 UserProfileH.id=snapshot.child("id").value.toString()
+                UserProfileH.active=snapshot.child("active").value.toString()
                 UserProfile.postValue(UserProfileH)
             }
 
@@ -116,7 +122,7 @@ class DataRepository(val db: FirebaseDatabase) {
                 for (data: DataSnapshot in snapshot.children) {
 
                     var user = data.getValue(User::class.java)
-                    if (user != null && user.id!=mauth.currentUser!!.uid) {
+                    if (user != null && user.id!=mauth.currentUser?.uid) {
                         UsersArrayH.add(user)
                     }
                 }
@@ -129,5 +135,12 @@ class DataRepository(val db: FirebaseDatabase) {
         })
         Log.d("NOKOO", "getUsers: $UsersArray ,,,,,, $UsersArrayH ")
         return UsersArray
+    }
+    //Setting User Status
+    suspend fun setUserStatusOnline(id:String){
+        db.getReference().child("Users").child(id).child("active").setValue("Online")
+    }
+    suspend fun setUserStatusOffline(id:String){
+            db.getReference().child("Users").child(id).child("active").setValue("Offline")
     }
 }

@@ -20,25 +20,51 @@
             android:background="@color/primaryColor"
             app:titleTextColor="@color/white">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ChatProfileimgview"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="@dimen/_2sdp"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                app:civ_border_color="@color/primaryColor"
-                app:civ_border_width="@dimen/_2sdp"
-                tools:src="@drawable/riteshdeshmukhprofilepic" />
-
-            <TextView
-                android:id="@+id/tv_receiver_name"
-                style="@style/UserNameStringColor"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_bold"
-                android:textStyle="bold"
-                tools:text="Ritesh Deshmukh " />
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ChatProfileimgview"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    app:civ_border_color="@color/primaryColor"
+                    app:civ_border_width="@dimen/_2sdp"
+                    tools:src="@drawable/riteshdeshmukhprofilepic" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_receiver_name"
+                        style="@style/UserNameStringColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:textStyle="bold"
+                        tools:text="Ritesh Deshmukh "
+                        android:layout_marginTop="@dimen/_3sdp"/>
+
+                    <TextView
+                        android:id="@+id/tv_receiver_active"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/Online"
+                        tools:text="Online"
+                        />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>

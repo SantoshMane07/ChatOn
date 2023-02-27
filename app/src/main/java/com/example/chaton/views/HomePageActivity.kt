@@ -36,11 +36,15 @@ class HomePageActivity : AppCompatActivity() , iUserAdapter{
     val mAdapter: UsersAadapter =UsersAadapter(this)
     lateinit var homePageBinding: ActivityHomePageBinding
     lateinit var homePageViewModel: HomePageViewModel
+    //Setting user id
+    lateinit var id:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         homePageBinding=ActivityHomePageBinding.inflate(layoutInflater)
         setContentView(homePageBinding.root)
+        //Setting User id
+        id=mauth.currentUser!!.uid
 
         val Repo: DataRepository =DataRepository(db)
         homePageViewModel = ViewModelProvider(this, HomePageViewModelFactory(Repo)).get(HomePageViewModel::class.java)
@@ -60,7 +64,21 @@ class HomePageActivity : AppCompatActivity() , iUserAdapter{
         })
         homePageBinding.homePageRecview.adapter=mAdapter
     }
-
+    //On Pause
+    override fun onPause() {
+        super.onPause()
+        homePageViewModel.setUserStatusOffline(id)
+    }
+    //On Resume
+    override fun onResume() {
+        super.onResume()
+        homePageViewModel.setUserStatusOnline(mauth.currentUser!!.uid)
+    }
+    //On Start
+    override fun onStart() {
+        super.onStart()
+        homePageViewModel.setUserStatusOnline(mauth.currentUser!!.uid)
+    }
     //ToolBar Creation
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.homemenus,menu)

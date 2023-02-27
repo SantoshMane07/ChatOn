@@ -70,7 +70,7 @@ class SignUpActivity : AppCompatActivity() {
                             //
                             imageUriString="https://firebasestorage.googleapis.com/v0/b/bzechat.appspot.com/o/defaultprofileimg.png?alt=media&token=1b68cce0-2022-4f62-9fc8-5910b26c392b"
 
-                            val user = User(mauth.currentUser!!.uid,name,phone,email,imageUriString,"Hey! there Iam using ChatOn")
+                            val user = User(mauth.currentUser!!.uid,name,phone,email,imageUriString,"Hey! there Iam using ChatOn","Online")
                             db.getReference().child("Users").child("${mauth.currentUser!!.uid}").setValue(user)
                             //storageDB.getReference().child("Upload").child("${mauth.currentUser!!.uid}").putFile(imageUri)
                             //

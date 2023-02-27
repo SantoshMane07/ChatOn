@@ -7,15 +7,17 @@ class User {
     var email:String=""
     var imgUri:String=""
     var status:String=""
+    var active:String=""
 
     constructor(){
     }
-    constructor(id:String,name:String,phone:String,email:String,imgUri:String,status:String){
+    constructor(id:String,name:String,phone:String,email:String,imgUri:String,status:String,active:String){
         this.name =name
         this.email=email
         this.phone=phone
         this.imgUri=imgUri
         this.id=id
         this.status=status
+        this.active=active
     }
 }
