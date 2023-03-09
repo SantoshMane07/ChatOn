@@ -75,8 +75,8 @@ class ChattingPageActivity : AppCompatActivity() {
 
         //On Messeage Send Button Clicked
         chattingPageBinding.btnSendMssge.setOnClickListener {
-            var mess=chattingPageBinding.edtMesseage.text.toString()
-            if (mess.isNotEmpty()){
+            var mess=chattingPageBinding.edtMesseage.text.toString().trim()
+            if (mess.isNotEmpty() && mess.isNotBlank()){
                 var date= Date()
                 var message:Messeage=Messeage(mess,date.time,senderID)
                 chattingPageViewModel.storechatsinDB(message,senderRoom,receiverRoom,receiverID)
@@ -86,6 +86,7 @@ class ChattingPageActivity : AppCompatActivity() {
             }
             else{
                 Toast.makeText(this,"Please Enter Messeage", Toast.LENGTH_SHORT).show()
+                chattingPageBinding.edtMesseage.setText("")
             }
         }
 
