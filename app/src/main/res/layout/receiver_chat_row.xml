@@ -13,7 +13,7 @@
         tools:text="Hie!"
         android:textColor="@color/black"
         android:textSize="@dimen/_15sdp"
-        android:padding="@dimen/_10sdp"
+        android:padding="@dimen/_12sdp"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="@dimen/_5sdp"
         />
