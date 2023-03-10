@@ -68,7 +68,7 @@ class SignUpActivity : AppCompatActivity() {
                     mauth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
                         if (it.isSuccessful){
                             //
-                            imageUriString="https://firebasestorage.googleapis.com/v0/b/bzechat.appspot.com/o/defaultprofileimg.png?alt=media&token=1b68cce0-2022-4f62-9fc8-5910b26c392b"
+                            imageUriString="https://firebasestorage.googleapis.com/v0/b/chaton-a9700.appspot.com/o/defaultprofileimg.png?alt=media&token=25ec315e-cecb-4339-8035-5f1a40dcefa1"
 
                             val user = User(mauth.currentUser!!.uid,name,phone,email,imageUriString,"Hey! there Iam using ChatOn","Online")
                             db.getReference().child("Users").child("${mauth.currentUser!!.uid}").setValue(user)

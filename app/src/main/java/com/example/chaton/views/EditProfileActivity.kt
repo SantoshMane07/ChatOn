@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -78,7 +79,7 @@ class EditProfileActivity : AppCompatActivity() {
                     storageDB.getReference().child("Uploads").child("${mauth.currentUser!!.uid}").downloadUrl.addOnSuccessListener {
                         imgUri=it.toString()
                         //Save Data to DataBase
-
+                        Log.d("img", "onCreate on Save btn: ${imgUri}")
                         var user:User = User()
                         user.id=mauth.currentUser!!.uid
                         user.imgUri=imgUri
