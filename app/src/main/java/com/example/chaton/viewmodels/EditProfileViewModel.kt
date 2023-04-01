@@ -20,7 +20,9 @@ class EditProfileViewModel(val Repo: DataRepository) : ViewModel() {
         return userProfileData
     }
     fun saveUserProfileData(user: User, id: String, context: Context){
-        Repo.saveUserProfileData(user,mauth.currentUser!!.uid,context)
+        viewModelScope.launch {
+            Repo.saveUserProfileData(user,mauth.currentUser!!.uid,context)
+        }
     }
     //ACTIVE
     fun setUserStatusOnline(id:String){

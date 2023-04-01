@@ -59,7 +59,7 @@ class DataRepository(val db: FirebaseDatabase) {
         }
     }
     //
-    fun saveUserProfileData(user:User,id: String,context: Context){
+    suspend fun saveUserProfileData(user:User,id: String,context: Context){
         db.getReference().child("Users").child("${id}").setValue(user).addOnCompleteListener {
             if (it.isSuccessful){
                 Toast.makeText(context,"Profile Edited Successfully", Toast.LENGTH_SHORT).show()
