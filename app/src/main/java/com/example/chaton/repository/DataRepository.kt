@@ -60,6 +60,7 @@ class DataRepository(val db: FirebaseDatabase) {
     }
     //
     suspend fun saveUserProfileData(user:User,id: String,context: Context){
+
         db.getReference().child("Users").child("${id}").setValue(user).addOnCompleteListener {
             if (it.isSuccessful){
                 Toast.makeText(context,"Profile Edited Successfully", Toast.LENGTH_SHORT).show()
@@ -110,7 +111,7 @@ class DataRepository(val db: FirebaseDatabase) {
                 TODO("Not yet implemented")
             }
         })
-        //Log.d("Profileis", "getUserProfileData: ${UserProfile.value!!.name}")
+        Log.d("Profileis", "getUserProfileData: ${UserProfile.value!!.name}")
         return UserProfile
     }
     //

@@ -51,7 +51,9 @@ class ChattingPageActivity : AppCompatActivity() {
         //Displaying Receiver Details
         chattingPageViewModel.getReceiverProfileData(receiverID).observe( this, androidx.lifecycle.Observer {
             chattingPageBinding.tvReceiverName.text= it.name
-            Picasso.get().load(it.imgUri).into(chattingPageBinding.ChatProfileimgview)
+            var defaultimg = "https://firebasestorage.googleapis.com/v0/b/chaton-a9700.appspot.com/o/defaultprofileimg.png?alt=media&token=25ec315e-cecb-4339-8035-5f1a40dcefa1"
+            //Picasso.get().load(it.imgUri).into(chattingPageBinding.ChatProfileimgview)
+            Picasso.get().load(defaultimg).into(chattingPageBinding.ChatProfileimgview)
             chattingPageBinding.tvReceiverActive.text = it.active
         })
         //

@@ -45,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
                 val password = logInBinding.edtPassword.text.toString()
                 if(email.isNotEmpty() && password.isNotEmpty()){
                     mauth.signInWithEmailAndPassword(email,password).addOnCompleteListener {
+                        Toast.makeText(this,"${it.isSuccessful}", Toast.LENGTH_SHORT).show()
                         if (it.isSuccessful){
                             //Store Token to DB
                             retreiveAndStoreToken()

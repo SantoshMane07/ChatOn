@@ -61,6 +61,8 @@ class EditProfileActivity : AppCompatActivity() {
 //            editProfileBinding.edtUserStatus.setText(status)
 //            editProfileBinding.edtUserName.setText(name)
 //            Picasso.get().load(imgUri).into(editProfileBinding.cimgvEditProfile)
+        var defaultimg = "https://firebasestorage.googleapis.com/v0/b/chaton-a9700.appspot.com/o/defaultprofileimg.png?alt=media&token=25ec315e-cecb-4339-8035-5f1a40dcefa1"
+        Picasso.get().load(defaultimg).into(editProfileBinding.cimgvEditProfile)
 //            //
 //            USERDATAobj.name=name
 //            USERDATAobj.imgUri=imgUri
@@ -84,10 +86,11 @@ class EditProfileActivity : AppCompatActivity() {
                     }
                     name = user!!.name
                     status = user.status
+//                    imgUri = user.imgUri
                     editProfileBinding.edtUserStatus.setText(status)
                     editProfileBinding.edtUserName.setText(name)
+//                    Picasso.get().load(imgUri).into(editProfileBinding.cimgvEditProfile)
                     Log.d("SS", "$imgUri : $name : $status")
-
                     USERDATAobj.name = name
                     USERDATAobj.imgUri = imgUri
                     USERDATAobj.status = status
@@ -117,11 +120,11 @@ class EditProfileActivity : AppCompatActivity() {
             if (SelectedImgUri!=null){
                 //Saving img to storage
                 storageDB.getReference().child("Uploads").child("${mauth.currentUser!!.uid}").putFile(SelectedImgUri!!).addOnCompleteListener{
-                    storageDB.getReference().child("Uploads").child("${mauth.currentUser!!.uid}").downloadUrl.addOnSuccessListener {
-                        imgUri=it.toString()
-                        //Save Data to DataBase
-                        Log.d("img", "onCreate on Save btn: ${imgUri}")
-                    }
+//                    storageDB.getReference().child("Uploads").child("${mauth.currentUser!!.uid}").downloadUrl.addOnSuccessListener {
+//                        imgUri=it.toString()
+//                        //Save Data to DataBase
+//                        Log.d("img", "onCreate on Save btn: ${imgUri}")
+//                    }
                 }
                 var user:User = User()
                 user.id=mauth.currentUser!!.uid

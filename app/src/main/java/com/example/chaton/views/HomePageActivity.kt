@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -59,6 +60,7 @@ class HomePageActivity : AppCompatActivity() , iUserAdapter{
             //DataChanged
             usersArray.clear()
             usersArray.addAll(it)
+//            Log.d("ARR", "onCreate: ${usersArray[0].imgUri}")
             //NotifyDataSetChanged
             mAdapter.usersListChanged(usersArray)
         })

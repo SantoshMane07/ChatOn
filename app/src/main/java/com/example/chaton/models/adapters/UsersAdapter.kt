@@ -1,9 +1,12 @@
 package com.example.chaton.models.adapters
 
+import android.app.Application
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chaton.R
 import com.example.chaton.models.User
@@ -30,7 +33,10 @@ class UsersAadapter(val listener: iUserAdapter) : RecyclerView.Adapter<UsersAada
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         holder.tv_user_name.text=UsersArray[position].name
         holder.tv_user_status.text=UsersArray[position].status
-        Picasso.get().load(UsersArray[position].imgUri).into(holder.cimgv_profile_image)
+        //LOG
+        //Log.d("CP", "onBindViewHolder: ${UsersArray[position].imgUri}")
+        var defaultimg = "https://firebasestorage.googleapis.com/v0/b/chaton-a9700.appspot.com/o/defaultprofileimg.png?alt=media&token=25ec315e-cecb-4339-8035-5f1a40dcefa1"
+        Picasso.get().load(defaultimg).into(holder.cimgv_profile_image)
     }
 
     override fun getItemCount(): Int {
